@@ -1,11 +1,10 @@
-import { Button } from '@nextui-org/react';
+import { Layout } from '../components/layouts';
 
 const HomePage = () => {
 	return (
-		<>
-			<h1>Hello</h1>
-			<Button>Hello</Button>
-		</>
+		<Layout title='Pokemon List'>
+			<h1>Hello Next</h1>
+		</Layout>
 	);
 };
 
