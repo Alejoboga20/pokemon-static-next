@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import { pokeApi } from '../api';
 import { Layout } from '../components/layouts';
 
 const HomePage = (props: any) => {
@@ -19,8 +20,12 @@ const HomePage = (props: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
+	const { data } = await pokeApi.get('/pokemon?limit=151');
+
 	return {
-		props: {},
+		props: {
+			pokemons: data.results,
+		},
 	};
 };
 
