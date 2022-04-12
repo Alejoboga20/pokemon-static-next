@@ -1,7 +1,8 @@
+import { Grid } from '@nextui-org/react';
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
 import { pokeApi } from '../api';
 import { Layout } from '../components/layouts';
+import { PokemonCard } from '../components/pokemon';
 import { PokemonListResponse, SmallPokemon } from '../interfaces';
 
 interface Props {
@@ -11,16 +12,11 @@ interface Props {
 const HomePage = ({ pokemons }: Props) => {
 	return (
 		<Layout title='Pokemon List'>
-			<h1>Hello Next</h1>
-
-			<ul>
-				{pokemons.map(({ id, name, img }) => (
-					<li key={id}>
-						#{id} {name}
-						<Image src={img} width={100} height={100} />
-					</li>
+			<Grid.Container gap={2} justify='flex-start'>
+				{pokemons.map((pokemon) => (
+					<PokemonCard pokemon={pokemon} key={pokemon.id} />
 				))}
-			</ul>
+			</Grid.Container>
 		</Layout>
 	);
 };
