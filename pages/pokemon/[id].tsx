@@ -5,6 +5,7 @@ import { PokemonDetails } from '../../interfaces/pokemon';
 import { pokeApi } from '../../api';
 import { Layout } from '../../components/layouts';
 import { localFavorites } from '../../utils';
+import confetti from 'canvas-confetti';
 
 const PokemonPage: NextPage<PokemonPageProps> = ({ pokemon }: PokemonPageProps) => {
 	const [isInFavorites, setIsInFavorites] = useState(localFavorites.isInFavorites(pokemon.id));
@@ -12,6 +13,19 @@ const PokemonPage: NextPage<PokemonPageProps> = ({ pokemon }: PokemonPageProps) 
 	const onToggleFavorite = () => {
 		localFavorites.toggleFavorite(pokemon.id);
 		setIsInFavorites(!isInFavorites);
+
+		if (!isInFavorites) {
+			confetti({
+				zIndex: 999,
+				particleCount: 100,
+				spread: 160,
+				angle: -100,
+				origin: {
+					x: 1,
+					y: 0,
+				},
+			});
+		}
 	};
 
 	return (
