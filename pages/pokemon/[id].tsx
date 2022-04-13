@@ -3,10 +3,15 @@ import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 import { PokemonDetails } from '../../interfaces/pokemon';
 import { pokeApi } from '../../api';
 import { Layout } from '../../components/layouts';
+import { localFavorites } from '../../utils';
 
 const PokemonPage: NextPage<PokemonPageProps> = ({ pokemon }: PokemonPageProps) => {
+	const onToggleFavorite = () => {
+		localFavorites.toggleFavorite(pokemon.id);
+	};
+
 	return (
-		<Layout>
+		<Layout title={pokemon.name}>
 			<Grid.Container css={{ marginTop: '5px' }} gap={2}>
 				<Grid xs={12} sm={4}>
 					<Card hoverable css={{ padding: '30px' }}>
@@ -26,7 +31,7 @@ const PokemonPage: NextPage<PokemonPageProps> = ({ pokemon }: PokemonPageProps) 
 							<Text h1 transform='capitalize'>
 								{pokemon.name}
 							</Text>
-							<Button color='gradient' ghost>
+							<Button color='gradient' ghost onClick={onToggleFavorite}>
 								Save in Favs
 							</Button>
 						</Card.Header>
