@@ -13,7 +13,7 @@ export const Layout = ({ children, title = 'Pokemon App' }: LayoutProps) => {
 				<meta name='keywords' content='Pokemon, pokedex' />
 				<meta property='og:title' content={`Pokemon Information - ${title}`} />
 				<meta property='og:description' content={`Page for - ${title}`} />
-				<meta property='og:image' content={`${origin}/image/banner.png`} />
+				<meta property='og:image' content={`${origin}/images/banner.png`} />
 			</Head>
 			<Navbar />
 			<main
