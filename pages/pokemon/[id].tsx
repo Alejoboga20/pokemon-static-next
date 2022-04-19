@@ -108,6 +108,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	return {
 		props: { pokemon: await getPokemonInfo(id) },
+		revalidate: 86400, //in seconds
 	};
 };
 
